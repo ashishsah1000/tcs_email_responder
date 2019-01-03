@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var ticket = require("../models/ticket");
 var db_url = "mongodb://ashishsah1000:ashish1998@ds141328.mlab.com:41328/tcsdatabase";
+var algo = require("../algo/finder");
 
 
 
@@ -16,29 +17,21 @@ router.post("/mail/data", function(req, res) {
         subject: req.body.subject,
         content: req.body.content
     });
+    data.tags= data.subject.split(" ");
+    
     data.save(function(err, callback) {
         if (err) {
             console.log(err);
             res.render("error", { error: err });
         } else {
             console.log("saved successfull" + callback._id);
-            //seving a ajax request
-            $j.ajax({
-                url: "http://localhost:4000/",
-                type: 'POST',
-                dataType: callback,
-                success: function() {
-                    alert('data sent');
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Error: ' + jqXHR.status);
-                    } // <-- remove the trailing comma you had here
-            });
-            responder(callback);
-            res.render("tickets", { docs: callback });
+            res.send(callback._id + " <h1> Check your status <a href='/tik/data'>My response</a<</h1>");
+            algo.checker(callback);
         }
 
     });
+ // Reply to the ticket that has been checked
+
 
 
 

@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+.tickets{
+  padding: 20px 40px;
+  background-color: white;
+  width: 80%;
+  min-height: 100px;
+  margin: 0px auto;
+  margin-top: 10px;
+  font-family: consolas;
+  color:rgba(55,55,55,1);
+  -webkit-box-shadow: 1px 2px 34px -3px rgba(5,5,5,1);
+-moz-box-shadow: 1px 2px 34px -3px rgba(5,5,5,1);
+box-shadow: 1px 2px 34px -3px rgba(5,5,5,1);
+}

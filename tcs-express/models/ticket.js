@@ -25,11 +25,11 @@ var newUser = new schema({
     },
     repliedBy: {
         type: [String],
-        default: []
+        default: ["System"]
     },
     reply: {
         type: [String],
-        default: [],
+        default: ["In transist will contact you soon (hint : write subject to the point to get help immediatly)"],
         unique: false
     },
     email: {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Workspace
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <p>Welcome 
+        <%= user.name %>
+    </p>
+     <form action="/logout" method="post">
+        <button type="submit">logout</button>
+    </form>
+    <button type="submit"><a href="/tik/data">Search ticekts</a></button>
+    <h4>Department <%= user.department %></h4>
+    <h3>The current tickets:</h3>
+    <% for(var i=0; i<item.length; i++) {%>
+        <div class="tickets" >
+            <h2><%= item[i].subject %>:</h2>
+            <h4><%= item[i]._id %></h4>
+                <p><%= item[i].content %></p>
+                <% if(item[i].department.length <1) {%>
+                <div class="reply">
+                    <form method="post" action="/reply">
+                        <select name="department" default="electrical">
+                           <option>Electrical</option>
+                           <option>Mechanical</option>
+                           <option>Electronics</option>
+                        </select> 
+                         <input name="rid" type="text" value="<%= item[i]._id %>" hidden>
+                          <textarea name="reply" type="text"> </textarea>
+                          <button type="submit">Reply</button>
+                    </form>
+                </div>
+                <% } %>
+                <button>-</button>
+        </div>
+        <% } %>
+            <hr>
+
+    
+</body>
+
+</html>
